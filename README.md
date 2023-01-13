@@ -1,8 +1,6 @@
 # proyectoCV
 Proyecto de C.V. para el Argentina Programa 4.0
 
-Ver el proyecto en online desde [Github Pages](https://nicolasminutti.github.io)
-
 ## :rocket: Comenzando
 
 _Proyecto final el cual consiste en realizar una página web que posea un curriculum vitae_
