@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Nicolás Minutti">
+    <meta name="description" content="Proyecto CV para el Programa Argentina Programa 4.0">
+    <meta name="copyright" content="Nicolás Minutti">
+    <meta name="keywords" content="CV, curriculum vitae, argentina programa 4.0, trabajo final, proyecto">
+    <meta name="robots" content="index, follow">
+    <title>Mi C.V.</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/axios.min.js"></script>
+    <script src="assets/js/datos.js" defer></script>
+</head>
+    <header>
+        <div id="errorConexion"></div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-opacity-75" id="navbar">
+            <div class="container">
+                <a class="navbar-brand h1">Curriculum Vitae</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDerecha" aria-controls="offcanvasDerecha">
+                    <span class="navbar-toggler-icon" data-bs-target="#offcanvasDerecha"></span>
+                </button>
+                <div class="offcanvas offcanvas-end text-bg-dark w-75" data-bs-hideresize="true" tabindex="-1" id="offcanvasDerecha" aria-labelledby="offcanvasDerecha">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasLabel">¿Dónde quieres ir?</h5>
+                        <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#sobreMi">Sobre mí</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#skills">Skills</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#portfolio">Portfolio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#experiencia">Experiencia</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="d-flex justify-content-center my-4">
+            <img class="rounded-circle" id="imagenPersona" alt="Foto Portada C.V." width="180px" height="180px">
+        </div>
+        <div class="d-flex justify-content-center">
+            <div class="text-center">
+                <p class="h2 text-white" id="nombrePersona"></p>
+                <p class="text-white">Desarrollo Web - Diseño Gráfico - Fotografía</p>
+            </div>
+        </div>        
+        <div class="d-flex justify-content-center">
+                <ul class="list-group list-group-horizontal gap-3" id="listaDatos">
+                    <li class="list-group-item rounded-circle"><a class="link-light" onmouseover='muestraDatos("edad")' onmouseout='muestraDatos("nombre")'><i class="bi bi-person-badge"></i></a></li>
+                    <li class="list-group-item rounded-circle"><a class="link-light" onmouseover='muestraDatos("email")' onmouseout='muestraDatos("nombre")'><i class="bi bi-envelope-at"></i></a></li>
+                    <li class="list-group-item rounded-circle"><a class="link-light" onmouseover='muestraDatos("domicilio")' onmouseout='muestraDatos("nombre")'><i class="bi bi-geo-alt"></i></a></li>
+                    <li class="list-group-item rounded-circle"><a class="link-light" onmouseover='muestraDatos("telefono")' onmouseout='muestraDatos("nombre")'><i class="bi bi-telephone"></i></a></li>
+                </ul>
+        </div>
+    </header>
+    <body>
+        <section class="container-fluid mx-auto" id="sobreMi">
+            <div class="border border-light shadow-lg p-3 mb-5 bg-body rounded">
+                <div class="card-group gap-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title fs-5">Sobre Mí</h4>
+                            <p class="card-text fs-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores molestiae a tenetur
+                                nostrum, ea hic alias modi placeat dolor numquam possimus praesentium reiciendis corrupti earum odio
+                                neque vitae sunt rerum.<br>
+                                Et praesentium, molestiae possimus dolorem expedita repudiandae neque quidem tempore suscipit. Aliquam
+                                inventore earum illo consequuntur fugit quo, quam rem vel reprehenderit suscipit harum, commodi
+                                aspernatur asperiores, mollitia quibusdam et!
+                                Et praesentium, molestiae possimus dolorem expedita repudiandae neque quidem tempore suscipit.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title fs-5">Información Básica</h4>
+                            <p class="card-text fs-6">
+                                <div class="row">
+                                    <div class="col col-md-4 text-nowrap"><strong>Edad:</strong></div>
+                                    <div class="col-md-auto" id="informacionEdad"></div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col col-md-4 text-nowrap"><strong>Email:</strong></div>
+                                    <div class="col-md-auto" id="informacionMail"></div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col col-md-4 text-nowrap"><strong>Teléfono:</strong></div>
+                                    <div class="col-md-auto" id="informacionTelefono"></div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col col-md-4 text-nowrap"><strong>Dirección:</strong></div>
+                                    <div class="col-md-auto" id="informacionDireccion"></div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col col-md-4 text-nowrap"><strong>Idiomas:</strong></div>
+                                    <div class="col-md-auto">Inglés, Alemán, Francés</div>
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </section>
+        <section class="container-fluid mx-auto" id="skills">
+            <div class="h4 text-center mb-4 title">Habilidades Profesionales</div>
+            <div class="border border-light shadow-lg p-3 mb-5 bg-body rounded">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 my-3">
+                            <div id="tituloSkills"><span class="fs-6">HTML5</span>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-label="html" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 my-3">
+                            <div id="tituloSkills"><span class="fs-6">CCS3</span>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-label="css3" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 my-3">
+                            <div id="tituloSkills"><span class="fs-6">JavaScript</span>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-label="javascript" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">70%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 my-3">
+                            <div id="tituloSkills"><span class="fs-6">Bootstrap</span>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-label="bootstrap" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">70%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 my-3">
+                            <div id="tituloSkills"><span class="fs-6">JQuery</span>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-label="jquery" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">55%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 my-3">
+                            <div id="tituloSkills"><span class="fs-6">SASS</span>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-label="sass" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">70%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="container-fluid mx-auto" id="portfolio">
+            <div class="h4 text-center mb-4 title">Portfolio</div>
+            <div class="d-flex justify-content-center mb-4">
+                <ul class="list-group list-group-horizontal gap-3">
+                    <li class="list-group-item rounded-circle"><a class="link-light" onmouseover="activaGaleria('desing')"><i class="bi bi-laptop"></i></a></li>
+                    <li class="list-group-item rounded-circle"><a class="link-light" onmouseover="activaGaleria('image')"><i class="bi bi-image"></i></a></li>
+                    <li class="list-group-item rounded-circle"><a class="link-light" onmouseover="activaGaleria('photo')"><i class="bi bi-camera"></i></a></li>
+                </ul>
+            </div>
+            <div class="d-flex justify-content-center mb-4">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-4">
+                        <img src="/assets/image/webdesing1.webp" class="img-fluid shadow-1-strong rounded mb-4" alt="Imagen de Diseño Web" id="frame1"/>
+                        <figcaption class="blockquote" id="fig-frame1">Lorem ipsum dolor</figcaption>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <img src="/assets/image/webdesing2.webp" class="img-fluid shadow-1-strong rounded mb-4" alt="Imagen de Diseño Web" id="frame2"/>
+                        <figcaption class="blockquote" id="fig-frame2">Nunc pellentesque mollis</figcaption>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <img src="/assets/image/webdesing3.webp" class="img-fluid shadow-1-strong rounded mb-4" alt="Imagen de Diseño Web" id="frame3"/>
+                        <figcaption class="blockquote" id="fig-frame3">Mauris sagittis potenti</figcaption>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <img src="/assets/image/webdesing4.webp" class="img-fluid shadow-1-strong rounded mb-4" alt="Imagen de Diseño Web" id="frame4"/>
+                        <figcaption class="blockquote" id="fig-frame4">Sollicitudin quisque arcu</figcaption>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <img src="/assets/image/webdesing5.webp" class="img-fluid shadow-1-strong rounded mb-4" alt="Imagen de Diseño Web" id="frame5"/>
+                        <figcaption class="blockquote" id="fig-frame5">Mus himenaeos ligula</figcaption>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <img src="/assets/image/webdesing6.webp" class="img-fluid shadow-1-strong rounded mb-4" alt="Imagen de Diseño Web" id="frame6"/>
+                        <figcaption class="blockquote" id="fig-frame6">Dignissim nulla turpis</figcaption>
+                    </div>
+                </div>
+            </div>            
+        </section>
+        <section class="container-fluid mx-auto" id="experiencia">
+            <div class="h4 text-center mb-4 title">Experiencia Laboral</div>
+                <div class="scroll-container">
+                    <div class="scroll-element js-scroll slide-right">
+                        <div class="border border-light shadow-lg p-3 mb-5 bg-body rounded">
+                            <div class="card mb-3">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <div class="card-body">
+                                            <h5 class="card-title ">MercadoLibre</h5>
+                                            <p class="card-text">Febrero 2018 - Actualidad</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Desarrollador Front End</h5>
+                                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor repellat natus quod hic blanditiis, quisquam nam commodi, magnam libero enim fugiat ipsa, nulla beatae eius nisi optio deserunt aperiam facilis. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint corrupti sequi deleniti tempora dolores eius voluptas harum provident, animi earum, rem nihil amet, distinctio nemo necessitatibus? Est odio eaque laborum!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border border-light shadow-lg p-3 mb-5 bg-body rounded">
+                            <div class="card mb-3">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <div class="card-body">
+                                            <h5 class="card-title ">Medios Registrados</h5>
+                                            <p class="card-text">Abril 2017 - Enero 2018</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Desarrollador Front End</h5>
+                                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione sapiente eos, quas magni adipisci placeat facere officia cum commodi. Perferendis voluptas sunt reprehenderit fuga, molestias optio sint delectus sed possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum alias sequi consequuntur quo quam illo accusamus, reiciendis facilis nam obcaecati consectetur! Itaque nam necessitatibus quas beatae quasi reprehenderit similique suscipit?</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border border-light shadow-lg p-3 mb-5 bg-body rounded">
+                            <div class="card mb-3">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <div class="card-body">
+                                            <h5 class="card-title ">Diario Austral</h5>
+                                            <p class="card-text">Julio 2016 - Marzo 2017</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Pasante Diseño</h5>
+                                            <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum beatae excepturi perspiciatis quos, quae odit sequi ducimus iste enim? Incidunt neque debitis praesentium sunt sint totam dolore sequi magni amet?. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero nostrum minus modi obcaecati fugiat, aliquam quos? Autem dolorem doloribus quam ad a qui! Molestiae ipsam quo architecto facilis rerum repellendus!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                
+                </div>                  
+        </section>
+    </body>
+    <footer>
+        <div class="d-flex justify-content-center">
+            <ul class="list-group list-group-horizontal gap-3" id="listaRedes">
+                <li class="list-group-item rounded-circle"><a class="link-light"><i class="bi bi-facebook"></i></a></li>
+                <li class="list-group-item rounded-circle"><a class="link-light"><i class="bi bi-twitter"></i></a></li>
+                <li class="list-group-item rounded-circle"><a class="link-light"><i class="bi bi-instagram"></i></a></li>
+                <li class="list-group-item rounded-circle"><a class="link-light"><i class="bi bi-snapchat"></i></a></li>
+            </ul>
+        </div>
+        <p class="text-center h4 mt-3" id="footerNombre"></p>
+    </footer>
+    <script src="assets/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

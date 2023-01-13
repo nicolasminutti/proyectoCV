@@ -1,0 +1,149 @@
+/* quicksand-300 - latin */
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 300;
+  src: local(''),
+       url('/assets/fonts/quicksand-v30-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/quicksand-v30-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* quicksand-regular - latin */
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+       url('/assets/fonts/quicksand-v30-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/quicksand-v30-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* quicksand-500 - latin */
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 500;
+  src: local(''),
+       url('/assets/fonts/quicksand-v30-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/quicksand-v30-latin-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* quicksand-600 - latin */
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 600;
+  src: local(''),
+       url('/assets/fonts/quicksand-v30-latin-600.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/quicksand-v30-latin-600.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* quicksand-700 - latin */
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 700;
+  src: local(''),
+       url('/assets/fonts/quicksand-v30-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/quicksand-v30-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+}
+
+header {
+    background: url(/assets/image/fondoHeader.jpg) no-repeat center;
+    background-size: cover;
+}
+
+.navbar-brand {
+    /* Elimino el margin inferior que coloca Bootstrap a la Brand */
+    margin-bottom:  0;
+}
+
+.navbar-toggler {
+    /* Elimino el borde al botón toggler del navbar */
+    border: 0 !important;
+}
+
+.navbar-toggler:focus,
+.btn-close:focus {
+    /* Elimino la sombra al botón toggler y al botón close del offcanvas */
+    box-shadow: none !important;
+}
+
+#listaDatos {
+    /* Pongo los botones a la mitad del bottom de la imagen del header */
+    margin-bottom: -25px !important;
+}
+
+.list-group-item {
+    font-size: 1.5rem;
+    background-color: #167895;
+}
+
+.list-group-item:hover {
+    background-color: #008198;
+    color: rgba(255, 255, 255, 1) !important;
+    box-shadow: 0 4px 16px rgba(49, 138, 172, 1);
+    transition: all 0.2s ease;
+}
+
+.bi:hover {
+    color: #28A1BE;
+}
+
+#sobreMi, #skills, #portfolio, #experiencia {
+    width: 80%;
+    margin: 2.5rem;
+}
+
+.card {
+    border: none;
+}
+
+.card-text {
+    text-align: justify;
+}
+
+.progress-bar {
+    color: #FFF;   
+    background: #167895;
+    height: 20px !important;
+}
+
+img {
+    /* Hago que las imágenes del portfolio se pongan grises al pasar por encima para hacer contraste con el texto del figcaption */
+    transition: all 0.5s ease;
+}
+
+img:hover {
+    filter: grayscale(100%);
+}
+
+.blockquote {
+	translate:  5px -55px;
+    color: #000 !important;
+}
+
+.js-scroll {
+    opacity: 0;
+    transition: opacity 250ms;
+}
+
+.js-scroll.scrolled {
+    opacity: 1;
+}
+
+.scrolled.slide-right {
+    animation: slide-in-right 1s ease-in-out both;
+}
+
+@keyframes slide-in-right {
+    0% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
