@@ -97,19 +97,19 @@ function activaGaleria(valor) {
     switch (valor) {
         case 'desing':
             for (let index = 1; index <= 6; index++) {
-                document.getElementById('frame' + index + '').setAttribute('src','/assets/image/webdesing' + index + '.webp')
+                document.getElementById('frame' + index + '').setAttribute('src','./assets/image/webdesing' + index + '.webp')
                 document.getElementById('fig-frame' + index + '').innerHTML =  frase[index - 1]
             }
             break
         case 'image':
             for (let index = 1; index <= 6; index++) {
-                document.getElementById('frame' + index + '').setAttribute('src','/assets/image/image' + index + '.webp')
+                document.getElementById('frame' + index + '').setAttribute('src','./assets/image/image' + index + '.webp')
                 document.getElementById('fig-frame' + index + '').innerHTML =  frase[index + 5]
             }
             break
         case 'photo':
             for (let index = 1; index <= 6; index++) {
-                document.getElementById('frame' + index + '').setAttribute('src','/assets/image/photo' + index + '.webp')
+                document.getElementById('frame' + index + '').setAttribute('src','./assets/image/photo' + index + '.webp')
                 document.getElementById('fig-frame' + index + '').innerHTML =  frase[index + 11]
             }
             break
